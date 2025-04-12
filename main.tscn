@@ -5,4 +5,4 @@
 [node name="Main" type="Node2D"]
 
 [node name="DraggableIconsBar" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(1, 131)
+position = Vector2(576, 511)

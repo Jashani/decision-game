@@ -8,14 +8,24 @@
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1153.0
-offset_bottom = 33.0
+offset_left = -472.0
+offset_top = -16.0
+offset_right = 473.0
+offset_bottom = 17.0
 script = ExtResource("1_phvhr")
 draggable_icon_scene = ExtResource("2_lemk1")
 text_labels = Array[String](["Least trustworthy", "Somewhat trustworthy", "Very trustworthy", "Completely trustworthy"])
 
 [node name="BarRect" type="PanelContainer" parent="Control"]
-layout_mode = 0
-offset_left = 96.0
-offset_right = 1041.0
-offset_bottom = 33.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.5
+offset_top = -16.5
+offset_right = 472.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
