@@ -36,7 +36,7 @@ func _ready():
 		return
 	
 	# Calculate the usable area based on the visual bar
-	var padding = icon_size / 2  # Use half icon size as padding
+	var padding = icon_size / 2.0  # Use half icon size as padding
 	usable_width = bar_rect.size.x - (padding * 2)
 	bar_x_start = bar_rect.position.x + padding
 	bar_x_end = bar_rect.position.x + bar_rect.size.x - padding
@@ -76,7 +76,7 @@ func add_icon_at_value(value):
 
 # Idk why icon_size works in the x here ¯\_(ツ)_/¯
 func _centered_icon_position(pos):
-	return pos - Vector2(icon_size, icon_size/2)
+	return pos - Vector2(icon_size, icon_size / 2.0)
 
 # Update icon position based on its value
 func _update_icon_position_from_value(icon):
@@ -154,7 +154,7 @@ func _draw_ruler():
 		) 
 		# Draw value text
 		var font = get_theme_default_font()
-		var under_the_bar = label_pos.y + bar_rect.size.y + icon_size / 2
+		var under_the_bar = label_pos.y + bar_rect.size.y + icon_size / 2.0
 		draw_string(font, Vector2(label_pos.x - 10, under_the_bar), str(i), HORIZONTAL_ALIGNMENT_CENTER)
 
 func _draw():
@@ -165,18 +165,5 @@ func _draw():
 	if dragging and dragged_icon:
 		var value_pos = _value_to_position(dragged_icon.value, true)
 		var font = get_theme_default_font()
-		draw_string(font, Vector2(value_pos.x - icon_size / 2, value_pos.y - 20), 
+		draw_string(font, Vector2(value_pos.x - icon_size / 2.0, value_pos.y - 20.0), 
 				   "Value: " + str(round(dragged_icon.value)), HORIZONTAL_ALIGNMENT_CENTER)
-
-# # Get the current value of a specific icon by index
-# func get_icon_value(index):
-# 	if index >= 0 and index < icons.size():
-# 		return icons[index].value
-# 	return null
-
-# # Get values of all icons as an array
-# func get_all_icon_values():
-# 	var values = []
-# 	for icon in icons:
-# 		values.append(icon.value)
-# 	return values
