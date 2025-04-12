@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://psll037audmp"]
+[gd_scene load_steps=4 format=3 uid="uid://psll037audmp"]
 
 [ext_resource type="PackedScene" uid="uid://cfjhdvvpxo56a" path="res://draggable_icons_bar.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bjudi6vvsbx37" path="res://score_label.tscn" id="2_0xm2m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+font_size = 32
 
 [node name="Main" type="Node2D"]
 
 [node name="DraggableIconsBar" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(576, 511)
+
+[node name="ScoreLabel" parent="." instance=ExtResource("2_0xm2m")]
+offset_left = 464.0
+offset_top = 41.0
+offset_right = 690.0
+offset_bottom = 150.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_h2yge")
+horizontal_alignment = 1
+vertical_alignment = 1
