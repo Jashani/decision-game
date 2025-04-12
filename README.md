@@ -1,1 +1,1 @@
-# cognition-game
+# decision-game
