@@ -5,7 +5,7 @@ extends Control
 @export var value_label_steps: int = 10  # Display labels at increments of this value (0, 10, 20...)
 @export var draggable_icon_scene: PackedScene
 @export var icon_count: int = 4
-@export var labels: Array[String] = ["Left", "Middle", "Right"]
+@export var text_labels: Array[String] = ["Left", "Middle", "Right"]
 
 @onready var bar_rect: PanelContainer = $BarRect  # This should be a PanelContainer child node
 
@@ -21,6 +21,8 @@ var usable_width = 0
 var bar_x_start = 0
 var bar_x_end = 0
 
+var font = null
+
 signal icon_value_changed(icon_index, new_value)
 
 func _ready():
@@ -32,6 +34,7 @@ func _ready():
 		push_error("You must assign a DraggableIcon scene to the ValueBar!")
 		return
 
+	font = get_theme_default_font()
 	_set_bar_constraints()
 	_place_icons()
 
@@ -41,11 +44,26 @@ func _set_bar_constraints():
 	bar_x_start = bar_rect.position.x + padding
 	bar_x_end = bar_rect.position.x + bar_rect.size.x - padding
 
-func _place_icons():
+func _equally_distanced_positions_across_bar(count, include_edges=false):
+	if include_edges:
+		count = count - 2
+	
 	var _range = MAX_VALUE - MIN_VALUE
-	var jump = _range / (icon_count + 1)
-	for i in range(icon_count):
-		add_icon_at_value((i + 1) * jump)
+	var jump = _range / (count + 1)
+	var positions = []
+	for i in range(count):
+		positions.append((i + 1 ) * jump)
+	
+	if include_edges:
+		positions.insert(0, MIN_VALUE)
+		positions.append(MAX_VALUE)
+	
+	return positions
+
+func _place_icons():
+	var positions = _equally_distanced_positions_across_bar(icon_count)
+	for pos in positions:
+		add_icon_at_value(pos)
 
 func add_icon_at_value(value):
 	if not draggable_icon_scene:
@@ -147,19 +165,28 @@ func _draw_ruler_tick_mark(pos):
 	) 
 
 func _draw_ruler_value_text(value, pos):
-	var font = get_theme_default_font()
 	var under_the_bar = pos.y + bar_rect.size.y + icon_size / 2.0
 	draw_string(font, Vector2(pos.x - 10, under_the_bar), str(value), HORIZONTAL_ALIGNMENT_CENTER)
+
+func _draw_text_labels():
+	var positions = _equally_distanced_positions_across_bar(text_labels.size(), true)
+	for i in range(positions.size()):
+		var arbitrary_width = 300
+		var arbitrary_push_down = 100
+		var pos = _value_to_position(positions[i])
+		pos.y = pos.y + arbitrary_push_down
+		pos.x = pos.x - arbitrary_width / 2.0
+		draw_string(font, pos, text_labels[i], HORIZONTAL_ALIGNMENT_CENTER, arbitrary_width)
 
 func _draw_ruler():
 	for i in range(0, 101, value_label_steps):
 		var label_pos = _value_to_position(i)
 		_draw_ruler_tick_mark(label_pos)
 		_draw_ruler_value_text(i, label_pos)
+	_draw_text_labels()
 		
 func _draw_value_over_icon():
 	var value_pos = _value_to_position(dragged_icon.value, true)
-	var font = get_theme_default_font()
 	draw_string(font, Vector2(value_pos.x - icon_size / 2.0, value_pos.y - 20.0), 
 			   "Value: " + str(round(dragged_icon.value)), HORIZONTAL_ALIGNMENT_CENTER)
 

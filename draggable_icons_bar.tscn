@@ -12,9 +12,10 @@ offset_right = 1153.0
 offset_bottom = 33.0
 script = ExtResource("1_phvhr")
 draggable_icon_scene = ExtResource("2_lemk1")
+text_labels = Array[String](["Least trustworthy", "Somewhat trustworthy", "Very trustworthy", "Completely trustworthy"])
 
 [node name="BarRect" type="PanelContainer" parent="Control"]
 layout_mode = 0
-offset_left = 43.0
-offset_right = 1094.0
+offset_left = 96.0
+offset_right = 1041.0
 offset_bottom = 33.0
