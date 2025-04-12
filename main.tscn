@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://psll037audmp"]
+
+[ext_resource type="PackedScene" uid="uid://cfjhdvvpxo56a" path="res://draggable_icons_bar.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node2D"]
+
+[node name="DraggableIconsBar" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(1, 131)
