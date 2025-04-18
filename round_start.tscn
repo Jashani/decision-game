@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://di04475vnerw2"]
+
+[ext_resource type="Script" uid="uid://c7foyw0m2abc2" path="res://round_start.gd" id="1_nrdem"]
+[ext_resource type="PackedScene" uid="uid://dj42biffyyxg" path="res://components/characters/character_intro.tscn" id="1_ock11"]
+[ext_resource type="PackedScene" uid="uid://cfjhdvvpxo56a" path="res://components/rating_bar/draggable_icons_bar.tscn" id="2_nrdem"]
+
+[node name="CharacterIntroduction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nrdem")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 611.0
+grow_horizontal = 2
+
+[node name="CharacterIntro" parent="VBoxContainer" instance=ExtResource("1_ock11")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CharacterIntro2" parent="VBoxContainer" instance=ExtResource("1_ock11")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CharacterIntro3" parent="VBoxContainer" instance=ExtResource("1_ock11")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CharacterIntro4" parent="VBoxContainer" instance=ExtResource("1_ock11")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DraggableIconsBar" parent="." instance=ExtResource("2_nrdem")]
+position = Vector2(549, 688)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -761.0
+offset_top = -440.0
+offset_right = -558.0
+offset_bottom = -356.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SubmitButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Submit"
+
+[connection signal="pressed" from="MarginContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
