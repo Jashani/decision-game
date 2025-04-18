@@ -1,0 +1,27 @@
+#~ start
+#Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+#Nathan: Here are some choices.
+#- First one
+#	Nathan: You picked the first one.
+#- Second one
+#	Nathan: You picked the second one.
+#- Start again => start
+#- End the conversation => END
+#Nathan: For more information see the online documentation.
+#=> END
+
+~ toto
+Toto: I think Gaga did it.
+=> END
+
+~ gaga
+Gaga: It's Riri—no doubt!
+=> END
+
+~ riri
+Riri: I swear I saw Toto do it.
+=> END
+
+~ bobo
+Momo: It can only be Toto.
+=> END

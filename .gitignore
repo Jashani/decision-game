@@ -1,3 +1,11 @@
+# Git
+.gitattributes
+
+# Editor
+.editorconfig
+.vscode/
+settings.json
+
 # Godot 4+ specific ignores
 .godot/
 
