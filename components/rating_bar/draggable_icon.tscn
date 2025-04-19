@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyfd0kt3sdyqk"]
 
-[ext_resource type="Texture2D" uid="uid://cpd0otmksl8u7" path="res://icon.svg" id="1_52enx"]
+[ext_resource type="Texture2D" uid="uid://cpd0otmksl8u7" path="res://sprites/icon.svg" id="1_52enx"]
 [ext_resource type="Script" uid="uid://dltlliqw0iu8p" path="res://components/rating_bar/draggable_icon.gd" id="2_psy1u"]
 
 [node name="DraggableIcon" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dj42biffyyxg"]
 
-[ext_resource type="Texture2D" uid="uid://cpd0otmksl8u7" path="res://icon.svg" id="1_yydme"]
+[ext_resource type="Texture2D" uid="uid://cpd0otmksl8u7" path="res://sprites/icon.svg" id="1_yydme"]
 
 [node name="CharacterIntro" type="Control"]
 layout_mode = 3
