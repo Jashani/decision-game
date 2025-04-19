@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddq4vsf8d717y"]
+
+[ext_resource type="Texture2D" uid="uid://cpd0otmksl8u7" path="res://sprites/icon.svg" id="1_cq3pu"]
+[ext_resource type="Script" uid="uid://cbhfwp1x5uwhv" path="res://stages/choose_leaker.gd" id="1_yewqp"]
+[ext_resource type="PackedScene" uid="uid://b3eap7lcrid6u" path="res://stages/confirmation_popup.tscn" id="3_k62th"]
+
+[node name="ChooseLeaker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yewqp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="Character1" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_cq3pu")
+stretch_mode = 4
+
+[node name="Character2" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_cq3pu")
+
+[node name="Character3" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_cq3pu")
+
+[node name="Character4" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_cq3pu")
+
+[node name="ConfirmButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -82.0
+offset_right = -52.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "Confirm"
+
+[node name="ConfirmLabel" type="Label" parent="ConfirmButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.012
+anchor_right = 0.98
+offset_top = -58.496
+offset_right = 0.0400009
+offset_bottom = -6.0
+text = "Choose a suspect first!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CurrentSelectionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.816
+anchor_right = 0.5
+anchor_bottom = 0.816
+offset_left = -233.5
+offset_top = -25.28
+offset_right = 233.5
+offset_bottom = 24.72
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Currently selected: nobody"
+
+[node name="ConfirmationPopup" parent="." instance=ExtResource("3_k62th")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="HBoxContainer/Character1" to="." method="_on_character_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/Character2" to="." method="_on_character_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/Character3" to="." method="_on_character_3_pressed"]
+[connection signal="pressed" from="HBoxContainer/Character4" to="." method="_on_character_4_pressed"]
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="no_pressed" from="ConfirmationPopup" to="." method="_on_confirmation_popup_no_pressed"]
+[connection signal="yes_pressed" from="ConfirmationPopup" to="." method="_on_confirmation_popup_yes_pressed"]
