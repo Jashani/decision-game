@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddq4vsf8d717y"]
 
 [ext_resource type="Texture2D" uid="uid://cpd0otmksl8u7" path="res://sprites/icon.svg" id="1_cq3pu"]
-[ext_resource type="Script" uid="uid://cbhfwp1x5uwhv" path="res://stages/choose_leaker.gd" id="1_yewqp"]
+[ext_resource type="Script" uid="uid://cbhfwp1x5uwhv" path="res://stages/3_choose/choose_leaker.gd" id="1_yewqp"]
 [ext_resource type="PackedScene" uid="uid://b3eap7lcrid6u" path="res://stages/confirmation_popup.tscn" id="3_k62th"]
 
 [node name="ChooseLeaker" type="Control"]

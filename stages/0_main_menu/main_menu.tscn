@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dyme5qrf3assk"]
 
-[ext_resource type="Script" uid="uid://bjwlkhbc1k1oa" path="res://stages/main_menu/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://bjwlkhbc1k1oa" path="res://stages/0_main_menu/main_menu.gd" id="1_06t4h"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,22 +16,27 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -153.0
-offset_right = 172.0
+offset_left = 92.0
+offset_top = -276.0
+offset_right = 264.0
+offset_bottom = -94.0
 grow_vertical = 0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 36
 text = "Start"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_font_sizes/font_size = 36
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

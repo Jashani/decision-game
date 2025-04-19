@@ -40,9 +40,16 @@ func _on_confirm_button_pressed() -> void:
 	_display_confirmation_popup()
 
 
+func _selected_character_is_leaker() -> bool:
+	push_error("Leaker validation is not implemented.")
+	return false
+
+
 func _on_confirmation_popup_yes_pressed() -> void:
-	# Load reveal screen
-	pass
+	if _selected_character_is_leaker():
+		get_tree().change_scene_to_file("res://stages/4_reveal/reveal_success.tscn")
+	else:
+		get_tree().change_scene_to_file("res://stages/4_reveal/reveal_failure.tscn")
 
 
 func _on_confirmation_popup_no_pressed() -> void:
