@@ -1,13 +1,10 @@
 extends Control
 
-# Bar configuration
 @export var icon_size: int = 64
 @export var value_label_steps: int = 10  # Display labels at increments of this value (0, 10, 20...)
 @export var draggable_icon_scene: PackedScene
 @export var icon_count: int = 4
 @export var text_labels: Array[String] = ["Left", "Middle", "Right"]
-
-@onready var bar_rect: PanelContainer = $BarRect  # This should be a PanelContainer child node
 
 const MAX_VALUE = 100.0
 const MIN_VALUE = 0.0
@@ -26,10 +23,6 @@ var font = null
 signal icon_value_changed(icon_index, new_value)
 
 func _ready():
-	if not bar_rect:
-		push_error("BarRect node not found! Add a PanelContainer as a child node named 'BarRect'")
-		return
-	
 	if not draggable_icon_scene:
 		push_error("You must assign a DraggableIcon scene to the ValueBar!")
 		return
@@ -40,9 +33,9 @@ func _ready():
 
 func _set_bar_constraints():
 	var padding = icon_size / 2.0  # Use half icon size as padding
-	usable_width = bar_rect.size.x - (padding * 2)
-	bar_x_start = bar_rect.position.x + padding
-	bar_x_end = bar_rect.position.x + bar_rect.size.x - padding
+	usable_width = size.x - (padding * 2)
+	bar_x_start = position.x + padding
+	bar_x_end = position.x + size.x - padding
 
 func _equally_distanced_positions_across_bar(count, include_edges=false):
 	if include_edges:
@@ -66,22 +59,18 @@ func _place_icons():
 		add_icon_at_value(pos)
 
 func add_icon_at_value(value):
-	if not draggable_icon_scene:
-		push_error("DraggableIcon scene not set!")
-		return null
-	
-	var icon_scene = draggable_icon_scene.instantiate()
-	var icon = icon_scene.find_child("TextureRect")
+	var icon: TextureButton = draggable_icon_scene.instantiate()
+	icon.button_down.connect(_on_icon_button_down.bind(icon))
+	icon.button_up.connect(_on_icon_button_up)
 	
 	icon.value = value
 	icon.index = icons.size()
-	icon.parent_bar = self
 	icon.custom_minimum_size = Vector2(icon_size, icon_size)
 	icon.size = Vector2(icon_size, icon_size)
 	
 	_update_icon_position_from_value(icon)
 	
-	add_child(icon_scene)
+	add_child(icon)
 	icons.append(icon)
 
 # Idk why icon_size works in the x here ¯\_(ツ)_/¯
@@ -98,10 +87,10 @@ func _value_to_position(value, center_vertically=false):
 	value = clamp(value, MIN_VALUE, MAX_VALUE)
 	
 	var x = bar_x_start + (value / 100.0) * usable_width
-	var y = bar_rect.position.y 
+	var y = position.y 
 	if center_vertically:
-		y = y - (bar_rect.size.y / 2)  # Center vertically by adding half of bar height
-	
+		y = y - (size.y / 2)  # Center vertically by adding half of bar height
+	#
 	return Vector2(x, y)
 
 # Convert a position on the bar to a value (MIN_VALUE-MAX_VALUE)
@@ -128,15 +117,14 @@ func _stop_dragging_icon():
 	emit_signal("icon_value_changed", dragged_icon.index, dragged_icon.value)
 	dragged_icon = null
 
-# Handle input from icons
-func _on_icon_gui_input(event, icon):
-	if not (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT):
-		return
 
-	if event.pressed:
-		_start_dragging_icon(icon)
-	else:
-		_stop_dragging_icon()
+func _on_icon_button_down(icon):
+	_start_dragging_icon(icon)
+
+
+func _on_icon_button_up():
+	_stop_dragging_icon()
+	
 
 func _drag_icon():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -144,8 +132,8 @@ func _drag_icon():
 	
 	# Constrain to horizontal movement within the bar
 	var new_x = clamp(local_mouse_pos.x, bar_x_start, bar_x_end)
-	var bar_height = bar_rect.position.y - (bar_rect.size.y / 2)
-	var new_pos = Vector2(new_x, bar_height)
+	var bar_height = position.y - (size.y / 2)
+	var new_pos = Vector2(new_x, position.y)
 	var centered_pos = _centered_icon_position(new_pos)
 	dragged_icon.position = centered_pos
 	
@@ -159,13 +147,13 @@ func _process(_delta):
 func _draw_ruler_tick_mark(pos):
 	draw_line(
 		Vector2(pos.x, pos.y), 
-		Vector2(pos.x, pos.y + bar_rect.size.y), 
+		Vector2(pos.x, pos.y + size.y), 
 		Color.WHITE, 
 		1
 	) 
 
 func _draw_ruler_value_text(value, pos):
-	var under_the_bar = pos.y + bar_rect.size.y + icon_size / 2.0
+	var under_the_bar = pos.y + size.y + icon_size / 2.0
 	draw_string(font, Vector2(pos.x - 10, under_the_bar), str(value), HORIZONTAL_ALIGNMENT_CENTER)
 
 func _draw_text_labels():

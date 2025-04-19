@@ -3,15 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cpd0otmksl8u7" path="res://sprites/icon.svg" id="1_52enx"]
 [ext_resource type="Script" uid="uid://dltlliqw0iu8p" path="res://components/rating_bar/draggable_icon.gd" id="2_psy1u"]
 
-[node name="DraggableIcon" type="Node2D"]
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -64.0
-offset_top = -66.0
-offset_right = 64.0
-offset_bottom = 62.0
-scale = Vector2(0.499688, 0.499688)
-pivot_offset = Vector2(64.04, 66.0412)
-texture = ExtResource("1_52enx")
-stretch_mode = 5
+[node name="DraggableIconButton" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_52enx")
 script = ExtResource("2_psy1u")

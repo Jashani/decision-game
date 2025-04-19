@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbgorlsu1uhgu"]
+
+[ext_resource type="Script" uid="uid://cwb1gro73bxp1" path="res://components/rating_bar/icon_bar.gd" id="1_khdan"]
+[ext_resource type="PackedScene" uid="uid://dyfd0kt3sdyqk" path="res://components/rating_bar/draggable_icon.tscn" id="2_dmmux"]
+
+[node name="DraggableIconsBarControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 945.0
+offset_bottom = 33.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_khdan")
+draggable_icon_scene = ExtResource("2_dmmux")
+text_labels = Array[String](["Least trustworthy", "Somewhat trustworthy", "Very trustworthy", "Completely trustworthy"])
+
+[node name="BarRect" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_right = 945.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2

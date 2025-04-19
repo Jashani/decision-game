@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://psll037audmp"]
+[gd_scene load_steps=7 format=3 uid="uid://psll037audmp"]
 
 [ext_resource type="PackedScene" uid="uid://cfjhdvvpxo56a" path="res://components/rating_bar/draggable_icons_bar.tscn" id="1_ctgs3"]
+[ext_resource type="PackedScene" uid="uid://cbgorlsu1uhgu" path="res://components/rating_bar/draggable_icons_bar_control.tscn" id="2_7eskf"]
 [ext_resource type="PackedScene" uid="uid://bjudi6vvsbx37" path="res://components/score/score_label.tscn" id="2_hi2nl"]
 [ext_resource type="PackedScene" uid="uid://dgxxgl1fgxy1s" path="res://components/characters/character_interact.tscn" id="3_7eskf"]
 [ext_resource type="Resource" uid="uid://go23je7pcjgg" path="res://dialogue/round1.dialogue" id="4_w1sb3"]
@@ -11,7 +12,14 @@ font_size = 32
 [node name="Main" type="Node2D"]
 
 [node name="DraggableIconsBar" parent="." instance=ExtResource("1_ctgs3")]
-position = Vector2(576, 511)
+visible = false
+position = Vector2(117, 498)
+
+[node name="DraggableIconsBarControl" parent="." instance=ExtResource("2_7eskf")]
+offset_left = 95.0
+offset_top = 439.0
+offset_right = 1040.0
+offset_bottom = 472.0
 
 [node name="ScoreLabel" parent="." instance=ExtResource("2_hi2nl")]
 offset_left = 464.0
