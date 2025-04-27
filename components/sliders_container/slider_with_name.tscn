@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2ifasmj8fnus"]
+
+[ext_resource type="Script" uid="uid://4l6f2lkojlgp" path="res://components/sliders_container/slider_with_name.gd" id="1_gbe3k"]
+
+[node name="SliderWithName" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+script = ExtResource("1_gbe3k")
+
+[node name="Name" type="Label" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Alex Riviera"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+value = 50.0
+tick_count = 5
+ticks_on_borders = true

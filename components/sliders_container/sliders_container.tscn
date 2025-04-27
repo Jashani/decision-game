@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://brqwb346p0isi"]
+
+[ext_resource type="Script" uid="uid://dkukel8l3wn2j" path="res://components/sliders_container/sliders_container.gd" id="1_by15f"]
+[ext_resource type="Script" uid="uid://4r5om1xovy8f" path="res://components/characters/data/character_data.gd" id="2_fxwg1"]
+[ext_resource type="Resource" uid="uid://bav3eyydlbkpw" path="res://components/characters/data/alex_riviera.tres" id="3_55q8i"]
+[ext_resource type="Script" uid="uid://d25xnglry8t4j" path="res://components/sliders_container/sliders_container_data.gd" id="3_njpjb"]
+[ext_resource type="PackedScene" uid="uid://c2ifasmj8fnus" path="res://components/sliders_container/slider_with_name.tscn" id="5_55q8i"]
+
+[sub_resource type="Resource" id="Resource_sqoil"]
+script = ExtResource("3_njpjb")
+title = "Reliability Rating"
+labels = ["Totally unreliable", "Somewhat unreliable", "Somewhat reliable", "Totally reliable"]
+characters = Array[ExtResource("2_fxwg1")]([ExtResource("3_55q8i"), ExtResource("3_55q8i"), ExtResource("3_55q8i"), ExtResource("3_55q8i")])
+metadata/_custom_type_script = "uid://d25xnglry8t4j"
+
+[node name="SlidersContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_by15f")
+data = SubResource("Resource_sqoil")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 71.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 48
+text = "Title"
+
+[node name="Control" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SlidersMarginContainer" type="MarginContainer" parent="VBoxContainer/Control"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 10
+
+[node name="Sliders" type="VBoxContainer" parent="VBoxContainer/Control/SlidersMarginContainer"]
+layout_mode = 2
+
+[node name="SliderWithName" parent="VBoxContainer/Control/SlidersMarginContainer/Sliders" instance=ExtResource("5_55q8i")]
+layout_mode = 2
+label = "Alex Riviera"
+
+[node name="SliderWithName2" parent="VBoxContainer/Control/SlidersMarginContainer/Sliders" instance=ExtResource("5_55q8i")]
+layout_mode = 2
+label = "Alex Riviera"
+
+[node name="SliderWithName3" parent="VBoxContainer/Control/SlidersMarginContainer/Sliders" instance=ExtResource("5_55q8i")]
+layout_mode = 2
+label = "Alex Riviera"
+
+[node name="Labels" type="HBoxContainer" parent="VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/Labels"]
+visible = false
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Totally unreliable"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/Control/Labels"]
+visible = false
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Somewhat unreliable"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/Control/Labels"]
+visible = false
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Somewhat reliable"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/Control/Labels"]
+visible = false
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Totally reliable"
+horizontal_alignment = 1
+vertical_alignment = 1
