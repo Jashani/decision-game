@@ -1,4 +1,5 @@
 extends Label
 
-func _process(_delta):
+
+func _ready() -> void:
 	self.text = "Score: " + str(Global.score)

@@ -7,7 +7,7 @@ const MAX_NAME_SIZE = 250
 # The label displayed to the left. Avoid making it too long
 @export var _name: String = ""
 # An icon for the slider grabber
-@export var icon: Texture = null
+@export var icon: Texture2D = null
 # Labels to display under slider
 @export var labels: PackedStringArray = []
 # Toggle labels row under slider
