@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbgorlsu1uhgu"]
+[gd_scene load_steps=3 format=3 uid="uid://b6s4cykw5fjlt"]
 
 [ext_resource type="Script" uid="uid://cwb1gro73bxp1" path="res://components/rating_bar/icon_bar.gd" id="1_khdan"]
 [ext_resource type="PackedScene" uid="uid://dyfd0kt3sdyqk" path="res://components/rating_bar/draggable_icon.tscn" id="2_dmmux"]

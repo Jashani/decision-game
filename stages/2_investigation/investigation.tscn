@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bjudi6vvsbx37" path="res://components/score/score_label.tscn" id="2_hi2nl"]
 [ext_resource type="PackedScene" uid="uid://dgxxgl1fgxy1s" path="res://components/characters/character_interact.tscn" id="3_7eskf"]
 [ext_resource type="Resource" uid="uid://go23je7pcjgg" path="res://dialogue/round1.dialogue" id="4_w1sb3"]
+[ext_resource type="PackedScene" uid="uid://brqwb346p0isi" path="res://components/sliders_container/sliders_container.tscn" id="5_hi2nl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
 font_size = 32
@@ -52,3 +53,9 @@ round_dialogue = ExtResource("4_w1sb3")
 position = Vector2(861, 291)
 character_name = "Bobo"
 round_dialogue = ExtResource("4_w1sb3")
+
+[node name="SlidersContainer" parent="." instance=ExtResource("5_hi2nl")]
+offset_left = 232.0
+offset_top = 415.0
+offset_right = 232.0
+offset_bottom = 415.0

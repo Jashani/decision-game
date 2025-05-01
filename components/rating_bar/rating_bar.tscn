@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dn1iew7ah72yo"]
+[gd_scene load_steps=0 format=3 uid="uid://dimhgbj2yyj2i"]
 
 [node name="RatingBar" type="Control"]
 layout_mode = 3
