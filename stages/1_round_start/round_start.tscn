@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://di04475vnerw2"]
+[gd_scene load_steps=7 format=3 uid="uid://di04475vnerw2"]
 
 [ext_resource type="Script" uid="uid://c7foyw0m2abc2" path="res://stages/1_round_start/round_start.gd" id="1_nrdem"]
 [ext_resource type="PackedScene" uid="uid://dj42biffyyxg" path="res://components/characters/character_intro.tscn" id="1_ock11"]
 [ext_resource type="PackedScene" uid="uid://brqwb346p0isi" path="res://components/sliders_container/sliders_container.tscn" id="3_epwwm"]
 [ext_resource type="Resource" uid="uid://cl6ygqtpdm3fr" path="res://components/sliders_container/round_1_reliability_sliders_container.tres" id="4_loosq"]
+[ext_resource type="PackedScene" uid="uid://cu13dxo0tpuol" path="res://components/journal/open_journal_button.tscn" id="5_1np8u"]
+[ext_resource type="PackedScene" uid="uid://b8sd6mgjt1aed" path="res://components/journal/journal.tscn" id="6_v52oc"]
 
 [node name="CharacterIntroduction" type="Control"]
 layout_mode = 3
@@ -68,5 +70,22 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Submit"
+
+[node name="OpenJournalButton" parent="." node_paths=PackedStringArray("journal") instance=ExtResource("5_1np8u")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 55.0
+offset_top = -120.0
+offset_right = 225.0
+offset_bottom = -45.0
+grow_horizontal = 1
+grow_vertical = 0
+journal = NodePath("../Journal")
+
+[node name="Journal" parent="." instance=ExtResource("6_v52oc")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

@@ -19,6 +19,7 @@ config/icon="res://sprites/icon.svg"
 
 Global="*res://global.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+JournalData="*res://components/journal/journal_data.gd"
 
 [display]
 
