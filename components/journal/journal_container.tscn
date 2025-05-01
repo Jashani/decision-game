@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm7hwb3d6oynn"]
+
+[ext_resource type="PackedScene" uid="uid://cu13dxo0tpuol" path="res://components/journal/open_journal_button.tscn" id="1_bsemh"]
+[ext_resource type="PackedScene" uid="uid://b8sd6mgjt1aed" path="res://components/journal/journal.tscn" id="2_kv1rg"]
+
+[node name="JournalContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OpenJournalButton" parent="." node_paths=PackedStringArray("journal") instance=ExtResource("1_bsemh")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 55.0
+offset_top = -120.0
+offset_right = 225.0
+offset_bottom = -45.0
+grow_horizontal = 1
+grow_vertical = 0
+journal = NodePath("../Journal")
+
+[node name="Journal" parent="." instance=ExtResource("2_kv1rg")]
+visible = false
+layout_mode = 1

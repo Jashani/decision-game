@@ -41,21 +41,25 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Entry1" type="Label" parent="ScrollContainer/VBoxContainer/MarginContainer/Entries"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
 text = "- Entry 1"
 
 [node name="Entry2" type="Label" parent="ScrollContainer/VBoxContainer/MarginContainer/Entries"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
 text = "- Entry 2"
 
 [node name="Entry3" type="Label" parent="ScrollContainer/VBoxContainer/MarginContainer/Entries"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
 text = "- Entry 3"
 
 [node name="Entry4" type="Label" parent="ScrollContainer/VBoxContainer/MarginContainer/Entries"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
 text = "- Entry 4"

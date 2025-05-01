@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://psll037audmp"]
+[gd_scene load_steps=11 format=3 uid="uid://psll037audmp"]
 
 [ext_resource type="Script" uid="uid://bn7no1jwybm07" path="res://stages/2_investigation/investigation.gd" id="1_w1sb3"]
 [ext_resource type="PackedScene" uid="uid://bjudi6vvsbx37" path="res://components/score/score_label.tscn" id="2_hi2nl"]
+[ext_resource type="PackedScene" uid="uid://b8sd6mgjt1aed" path="res://components/journal/journal.tscn" id="2_rh2r0"]
 [ext_resource type="PackedScene" uid="uid://dgxxgl1fgxy1s" path="res://components/characters/character_interact.tscn" id="3_7eskf"]
 [ext_resource type="Resource" uid="uid://go23je7pcjgg" path="res://dialogue/round1.dialogue" id="4_w1sb3"]
 [ext_resource type="PackedScene" uid="uid://brqwb346p0isi" path="res://components/sliders_container/sliders_container.tscn" id="5_hi2nl"]
 [ext_resource type="Resource" uid="uid://cl6ygqtpdm3fr" path="res://components/sliders_container/round_1_reliability_sliders_container.tres" id="7_w1sb3"]
 [ext_resource type="Resource" uid="uid://kirmh0oa5gdp" path="res://components/sliders_container/round_1_leak_sliders_container.tres" id="8_rh2r0"]
+[ext_resource type="PackedScene" uid="uid://cu13dxo0tpuol" path="res://components/journal/open_journal_button.tscn" id="9_i6rag"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
 font_size = 32
@@ -109,13 +111,30 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -202.0
-offset_top = -114.0
-offset_right = -35.0
-offset_bottom = -39.0
+offset_left = -215.0
+offset_top = -120.0
+offset_right = -45.0
+offset_bottom = -45.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Submit"
+
+[node name="OpenJournalButton" parent="." node_paths=PackedStringArray("journal") instance=ExtResource("9_i6rag")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 55.0
+offset_top = -120.0
+offset_right = 225.0
+offset_bottom = -45.0
+grow_horizontal = 1
+grow_vertical = 0
+journal = NodePath("../Journal")
+
+[node name="Journal" parent="." instance=ExtResource("2_rh2r0")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
