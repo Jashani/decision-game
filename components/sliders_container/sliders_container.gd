@@ -1,3 +1,5 @@
+class_name SlidersContainer
+
 extends Control
 
 
@@ -7,10 +9,12 @@ var MINIMUM_LABEL_WIDTH = 0
 @export var data: SlidersContainerData = null
 @onready var labels: HBoxContainer = find_child("Labels")
 @onready var sliders: VBoxContainer = find_child("Sliders")
+@onready var title_label: Label = find_child("Title")
 var slider_with_name_scene: PackedScene = load("res://components/sliders_container/slider_with_name.tscn")
 
 
 func _ready():
+	title_label.text = data.title
 	for label in data.labels:
 		_create_label(label)
 

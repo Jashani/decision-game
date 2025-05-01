@@ -8,6 +8,7 @@ anchor_right = 1.0
 offset_bottom = 54.0
 grow_horizontal = 2
 size_flags_vertical = 3
+theme_override_constants/h_separation = 20
 columns = 2
 script = ExtResource("1_gbe3k")
 _name = "My name"

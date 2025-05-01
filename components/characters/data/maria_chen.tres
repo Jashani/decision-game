@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://dbtmukdfv2cha"]
+
+[ext_resource type="Texture2D" uid="uid://cpd0otmksl8u7" path="res://sprites/icon.svg" id="1_lrhtr"]
+[ext_resource type="Script" uid="uid://4r5om1xovy8f" path="res://components/characters/data/character_data.gd" id="2_uriwv"]
+
+[resource]
+script = ExtResource("2_uriwv")
+name = "Maria Chen"
+icon = ExtResource("1_lrhtr")
