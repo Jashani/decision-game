@@ -51,16 +51,26 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="SliderWithName" parent="VBoxContainer/Control/SlidersMarginContainer/Sliders" instance=ExtResource("5_55q8i")]
+visible = false
 layout_mode = 2
-label = "Alex Riviera"
+_name = "Alex Riviera"
 
 [node name="SliderWithName2" parent="VBoxContainer/Control/SlidersMarginContainer/Sliders" instance=ExtResource("5_55q8i")]
+visible = false
 layout_mode = 2
-label = "Alex Riviera"
+_name = "Alex Rivieraer"
 
 [node name="SliderWithName3" parent="VBoxContainer/Control/SlidersMarginContainer/Sliders" instance=ExtResource("5_55q8i")]
+visible = false
 layout_mode = 2
-label = "Alex Riviera"
+_name = "Alex Rivieraest"
+
+[node name="SliderWithName4" parent="VBoxContainer/Control/SlidersMarginContainer/Sliders" instance=ExtResource("5_55q8i")]
+visible = false
+layout_mode = 2
+_name = "Alex Riviera 2.0"
+labels = ["Unreliable", "Somewhat unreliable", "Somewhat reliable", "Reliable"]
+hide_labels = false
 
 [node name="Labels" type="HBoxContainer" parent="VBoxContainer/Control"]
 layout_mode = 2

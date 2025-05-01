@@ -5,21 +5,16 @@ var MINIMUM_LABEL_WIDTH = 0
 
 
 @export var data: SlidersContainerData = null
-var text_labels: PackedStringArray = []
-var labels: HBoxContainer = null
-var sliders: VBoxContainer = null
+@onready var labels: HBoxContainer = find_child("Labels")
+@onready var sliders: VBoxContainer = find_child("Sliders")
 var slider_with_name_scene: PackedScene = load("res://components/sliders_container/slider_with_name.tscn")
 
 
-func _ready():	
-	labels = find_child("Labels")
-	sliders = find_child("Sliders")
-
+func _ready():
 	for label in data.labels:
 		_create_label(label)
 
-	for character in data.characters:
-		_create_slider(character)
+	_create_sliders(data.characters)
 
 
 func _create_label(text: String):
@@ -31,24 +26,28 @@ func _create_label(text: String):
 	labels.add_child(label)
 
 
-func _create_slider(character_data: CharacterData):
+func _create_sliders(characters: Array[CharacterData]):
+	for index in range(characters.size()):
+		var with_labels: bool = false
+		# if last slider
+		if index == characters.size() - 1:
+			with_labels = true
+
+		_create_slider(characters[index], with_labels)
+
+
+
+func _create_slider(character_data: CharacterData, with_labels: bool):
 	var slider: SliderWithName = slider_with_name_scene.instantiate()
-	slider.label = character_data.name
+	slider._name = character_data.name
 	slider.icon = character_data.icon
+	
+	if with_labels:
+		slider.hide_labels = false
+		slider.labels = data.labels
+	
 	sliders.add_child(slider)
 
-
-#
-#func _draw_text_labels():
-	#var positions = _equally_distanced_positions_across_bar(text_labels.size(), true)
-	#for i in range(positions.size()):
-		#var arbitrary_width = 300
-		#var arbitrary_push_down = 100
-		#var pos = _value_to_position(positions[i])
-		#pos.y = pos.y + arbitrary_push_down
-		#pos.x = pos.x - arbitrary_width / 2.0
-		#draw_string(font, pos, text_labels[i], HORIZONTAL_ALIGNMENT_CENTER, arbitrary_width)
-#
 #
 #func _equally_distanced_positions_across_bar(count, include_edges=false):
 	#if include_edges:
