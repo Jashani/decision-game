@@ -13,11 +13,14 @@ const MAX_NAME_SIZE = 250
 # Toggle labels row under slider
 @export var hide_labels: bool = true
 
+@onready var name_label: Label = $Name
+@onready var labels_container: HBoxContainer = $Labels
+@onready var padding: Control = $Padding
 
 func _ready() -> void:
-	$Name.text = _name
+	name_label.text = _name
 	
-	if size.x > MAX_NAME_SIZE:
+	if name_label.size.x > MAX_NAME_SIZE:
 		push_error("Label is too long in slider with name: " + _name)
 	
 	if hide_labels:
@@ -27,7 +30,6 @@ func _ready() -> void:
 
 
 func _create_labels() -> void:
-	var labels_container: HBoxContainer = $Labels
 	for index in range(labels.size()):
 		var label = Label.new()
 		label.text = labels[index]
@@ -39,5 +41,5 @@ func _create_labels() -> void:
 
 
 func _hide_labels() -> void:
-	$Padding.hide()
-	$Labels.hide()
+	padding.hide()
+	labels_container.hide()

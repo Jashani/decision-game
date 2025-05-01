@@ -2,19 +2,16 @@ extends Control
 
 
 var first_selection: bool = true
-var current_selection_label: Label = null
-var confirmation_popup: ConfirmationPopup = null
-
-
-func _ready() -> void:
-	current_selection_label = $CurrentSelectionLabel
-	confirmation_popup = $ConfirmationPopup
+@onready var current_selection_label: Label = $CurrentSelectionLabel
+@onready var confirmation_popup: ConfirmationPopup = $ConfirmationPopup
+@onready var confirm_button: Button = $ConfirmButton
+@onready var confirm_label: Label = $ConfirmButton/ConfirmLabel
 
 
 func _character_selected(character: String) -> void:
 	if first_selection:
-		$ConfirmButton.disabled = false
-		$ConfirmButton/ConfirmLabel.hide()
+		confirm_button.disabled = false
+		confirm_label.hide()
 		first_selection = false
 	
 	current_selection_label.text = "Currently selected: " + character
